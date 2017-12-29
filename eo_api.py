@@ -29,7 +29,8 @@ class EO_API(object):
         "user_devices": "user/devices/",
         "devices":"devices/",
         "displayed": "user/artworks/displayed/",
-        "favorited": "user/artworks/favorited/"
+        "favorited": "user/artworks/favorited/",
+        "playlists": "user/playlists"
         }
 
     def __init__(self, username, password):

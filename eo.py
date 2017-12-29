@@ -63,7 +63,8 @@ class ElectricAccount(object):
 		self.api = eo_api.EO_API(username, password)
 		self.logger = logging.getLogger(".".join(["eo", self.__class__.__name__]))
 
-		self.userAccount=json.loads(self.user().text)
+		self.userAccountJson=self.user().text
+		self.userAccount=json.loads(self.userAccountJson)
 
 		print "initializing eo Account for "+self.userAccount['username']
 
