@@ -23,10 +23,11 @@ class EO_API(object):
 
     # Class variables
     base_url = "https://www.electricobjects.com/"
-    api_version_path = "api/v2/"
+    api_version_path = "api/v6/"
     endpoints = {
         "user": "user/",
-        "devices": "user/devices/",
+        "user_devices": "user/devices/",
+        "devices":"devices/",
         "displayed": "user/artworks/displayed/",
         "favorited": "user/artworks/favorited/"
         }
@@ -39,7 +40,7 @@ class EO_API(object):
         self.signin_url = signin_url
         self.last_signin_time = 0
 
-        self.net = eo_net.EO_Net()
+        self.net = eo_net.EO_Net(username, password)
 
     def signin(self):
         """Sign in. If successful, set self.session to the session for reuse in

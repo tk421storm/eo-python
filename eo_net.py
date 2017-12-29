@@ -38,10 +38,13 @@ class EO_Net(object):
     Calls are rate limited and include retries with jitter, limits, and exponential backoff.
     """
 
-    def __init__(self):
+    def __init__(self, username, password):
         self.logger = logging.getLogger(".".join(["eo", self.__class__.__name__]))
         self.session = None
         self.last_request_time = 0
+        
+        self.username=username
+        self.password=password
 
     def get_session(self):
         return self.session
@@ -136,6 +139,8 @@ class EO_Net(object):
                 return self.session.get(url, params=params)
             elif method == "POST":
                 return self.session.post(url, params=params)
+            elif method == "PUT_AUTH":
+              	return self.session.put(url, auth=(self.username, self.password), data=params)
             elif method == "PUT":
                 return self.session.put(url)
             elif method == "DELETE":
@@ -167,6 +172,9 @@ class EO_Net(object):
         Returns:
             The server response or None.
         """
+        print "url: "+str(url)
+        print "params: "+str(params)
+        print "method: "+str(method)
         retries = 0
         delay = INITIAL_RETRY_DELAY
         while True:
