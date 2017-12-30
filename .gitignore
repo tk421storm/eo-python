@@ -67,3 +67,4 @@ target/
 
 #local scripts
 autostart.py
+autostop.py

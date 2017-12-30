@@ -172,9 +172,9 @@ class EO_Net(object):
         Returns:
             The server response or None.
         """
-        print "url: "+str(url)
-        print "params: "+str(params)
-        print "method: "+str(method)
+        #print "url: "+str(url)
+        #print "params: "+str(params)
+        #print "method: "+str(method)
         retries = 0
         delay = INITIAL_RETRY_DELAY
         while True:
