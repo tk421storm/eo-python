@@ -284,8 +284,10 @@ if __name__ == "__main__":
 setup_logging()
 
 #testing only
+'''
 credentials=get_credentials()
 eoAccount=ElectricAccount(credentials['username'], credentials['password'])
 
 for device in eoAccount.devices:
 	print "device "+device.name+" is currently displaying "+str(device.current_artwork_id())
+'''
