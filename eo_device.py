@@ -50,20 +50,23 @@ class ElectricObject(object):
 		self.api.make_request(endpoint="devices", params={'backlight_state':'true'}, method="PUT_AUTH", path_append=str(self.id))
 		self.refresh()
 		
-	def setSleepSchedule(self, startTime, endTime):
-		pass
+	def setSleepSchedule(self, wakeTime, sleepTime):
+		"""passed a 24hour string (16:04:32) for wakeTime and sleepTime, set the sleep schedule"""
+		
+		self.api.make_request(endpoint="devices", params={'sleep_begin':sleepTime, 'sleep_end':wakeTime}, method="PUT_AUTH", path_append=str(self.id))
+		#self.refresh()
 		
 	def enableSleep(self):
 		"""enable device sleep"""
 		
 		self.api.make_request(endpoint="devices", params={'sleep_enabled':'true'}, method="PUT_AUTH", path_append=str(self.id))
-		self.refresh()
+		#self.refresh()
 		
 	def disableSleep(self):
 		"""disable device sleeping"""
 		
 		self.api.make_request(endpoint="devices", params={'sleep_enabled':'false'}, method="PUT_AUTH", path_append=str(self.id))
-		self.refresh()
+		#self.refresh()
 
 	def display(self, media_id):
 		"""Display media by id."""
